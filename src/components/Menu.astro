@@ -1,0 +1,106 @@
+---
+const items = [
+	{
+		name: 'Flat White',
+		note: 'Double ristretto, steamed milk',
+		price: '4.50',
+		featured: true,
+		img: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=900&q=80&auto=format&fit=crop',
+		alt: 'Two flat whites with rosetta latte art on a wooden table beside potted plants',
+	},
+	{
+		name: 'Espresso',
+		note: 'Single origin, roasted in the back room',
+		price: '3.00',
+		img: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&q=80&auto=format&fit=crop',
+		alt: 'Three portafilters holding ground coffee and whole beans beside a poured espresso',
+	},
+	{
+		name: 'Cold Brew',
+		note: 'Sixteen hours, steeped slow',
+		price: '5.50',
+		img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80&auto=format&fit=crop',
+		alt: 'A tall glass of cold brew coffee over ice in a softly lit cafe',
+	},
+	{
+		name: 'Iced Latte',
+		note: 'Slow-poured milk, no syrup',
+		price: '5.00',
+		img: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600&q=80&auto=format&fit=crop',
+		alt: 'Milk swirling down through iced coffee in a tall glass',
+	},
+	{
+		name: 'Beans, 250g',
+		note: 'Whatever we are pouring this week',
+		price: '18.00',
+		img: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600&q=80&auto=format&fit=crop',
+		alt: 'A close-up pile of dark roasted coffee beans',
+	},
+];
+---
+
+<section id="menu" class="bg-cream/60 px-6 py-[clamp(4rem,8vw,8rem)]">
+	<div class="mx-auto max-w-[1280px] space-y-12">
+		<div class="max-w-2xl space-y-6">
+			<p class="text-sm font-medium tracking-[0.2em] text-accent uppercase">The Board</p>
+			<svg width="120" height="16" viewBox="0 0 120 16" fill="none" aria-hidden="true">
+				<path d="M2 12 C 30 -4, 50 24, 80 8 S 110 2, 118 6" stroke="#cfb53b" stroke-width="1.5" stroke-linecap="round" />
+			</svg>
+			<h2 class="text-3xl font-bold tracking-tight text-charcoal">A short menu, kept short on purpose.</h2>
+		</div>
+
+		<!-- Asymmetric grid: one wide featured card, the rest paired -->
+		<div class="grid gap-6 md:grid-cols-6">
+			{items.map((item, i) => (
+				<article
+					class:list={[
+						'menu-card overflow-hidden rounded-xl border border-secondary/40 bg-neutral shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition duration-200 hover:scale-[1.03] hover:shadow-lg',
+						item.featured ? 'md:col-span-4' : 'md:col-span-2',
+					]}
+					style={`animation-delay: ${i * 100}ms`}
+				>
+					<img
+						src={item.img}
+						alt={item.alt}
+						loading="lazy"
+						class:list={['w-full object-cover', item.featured ? 'aspect-[16/9]' : 'aspect-[4/3]']}
+					/>
+					<div class="p-6">
+						<h3 class:list={['font-bold text-charcoal', item.featured ? 'text-xl' : 'text-lg']}>
+							{item.name}
+						</h3>
+						<p class="mt-2 text-sm leading-relaxed text-charcoal/75">{item.note}</p>
+						<p class="mt-4 font-mono text-sm text-primary">{item.price}</p>
+					</div>
+				</article>
+			))}
+		</div>
+
+		<a
+			href="#"
+			class="inline-block rounded-xl border-[1.5px] border-primary px-6 py-3 font-semibold text-primary transition duration-200 hover:scale-[1.03] hover:bg-primary hover:text-neutral active:translate-y-px"
+		>
+			See the full menu
+		</a>
+	</div>
+</section>
+
+<style>
+	/* Entry: fade + translate-Y per DESIGN.md, staggered 100ms via inline delay */
+	.menu-card {
+		animation: menu-rise 480ms ease-out both;
+	}
+
+	@keyframes menu-rise {
+		from {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.menu-card {
+			animation: none;
+		}
+	}
+</style>

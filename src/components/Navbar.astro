@@ -1,0 +1,64 @@
+---
+const links = [
+	{ href: '#menu', label: 'Menu' },
+	{ href: '#about', label: 'About' },
+	{ href: '#visit', label: 'Visit' },
+];
+---
+
+<header class="sticky top-0 z-[100] border-b border-secondary/40 bg-neutral/95 backdrop-blur">
+	<nav class="mx-auto flex max-w-[1280px] items-center justify-between gap-6 px-6 py-4">
+		<a href="#top" class="flex items-center gap-3">
+			<!-- Lantern mark: a small stained-glass lozenge in the brand colors -->
+			<svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+				<path d="M15 1 C 22 1 27 6 27 15 C 27 24 22 29 15 29 C 8 29 3 24 3 15 C 3 6 8 1 15 1 Z" fill="#008080" />
+				<path d="M15 1 C 18 1 21 4 23 7 L 15 15 L 7 7 C 9 4 12 1 15 1 Z" fill="#cfb53b" />
+				<path d="M3 15 C 3 20 6 25 11 27 L 15 15 Z" fill="#800020" opacity="0.6" />
+			</svg>
+			<span class="text-lg font-bold tracking-tight text-charcoal">Lantern Lane</span>
+		</a>
+
+		<!-- Mobile: CSS-only disclosure, no JS -->
+		<details class="relative md:hidden">
+			<summary
+				class="cursor-pointer list-none rounded-lg border border-primary px-3 py-2 text-sm font-medium text-primary [&::-webkit-details-marker]:hidden"
+			>
+				Menu
+			</summary>
+			<ul class="absolute right-0 z-10 mt-2 w-44 rounded-xl border border-secondary/40 bg-neutral p-2 shadow-lg">
+				{
+					links.map((link) => (
+						<li>
+							<a href={link.href} class="block rounded-lg px-3 py-2 text-sm text-charcoal hover:bg-cream">
+								{link.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</details>
+
+		<ul class="hidden items-center gap-8 md:flex">
+			{
+				links.map((link) => (
+					<li>
+						<a
+							href={link.href}
+							class="font-medium text-charcoal/80 transition duration-200 hover:text-primary"
+						>
+							{link.label}
+						</a>
+					</li>
+				))
+			}
+			<li>
+				<a
+					href="#"
+					class="inline-block rounded-xl bg-primary px-5 py-2.5 font-semibold text-neutral transition duration-200 hover:brightness-[0.92] active:translate-y-px"
+				>
+					Order ahead
+				</a>
+			</li>
+		</ul>
+	</nav>
+</header>

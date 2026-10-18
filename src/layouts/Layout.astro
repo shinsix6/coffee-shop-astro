@@ -1,3 +1,6 @@
+---
+import '../styles/global.css';
+---
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,6 +9,12 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap"
+			rel="stylesheet"
+		/>
 		<title>Astro Basics</title>
 	</head>
 	<body>
@@ -18,6 +27,10 @@
 	body {
 		margin: 0;
 		width: 100%;
-		height: 100%;
+	}
+
+	/* Keep anchored headings clear of the sticky header */
+	html {
+		scroll-padding-top: 5rem;
 	}
 </style>

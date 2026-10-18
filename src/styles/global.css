@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neutral: #fffff0;
+  --color-primary: #008080;
+  --color-secondary: #cfb53b;
+  --color-tertiary: #e0b0ff;
+  --color-accent: #800020;
+  --color-cream: #fffdd0;
+  --font-display: "Quattrocento", serif;
+  /* shortcut: charcoal stands in for "no pure black" from DESIGN.md, use the exact brand text color once defined */
+  --color-charcoal: #2b2b2b;
+}
+
+@layer base {
+  body {
+    @apply bg-neutral font-display text-charcoal;
+  }
+}
